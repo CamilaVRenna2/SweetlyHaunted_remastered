@@ -1,9 +1,9 @@
-export default class Tutorial extends Phaser.Scene {
+export default class Credits extends Phaser.Scene {
     constructor() {
-      super("Tutorial");
+      super("Credits");
     }
     init(data){
-    this.level=data.level;
+
     }
 
     create(){
@@ -18,9 +18,14 @@ export default class Tutorial extends Phaser.Scene {
       this.fadingOverlay.setOrigin(0, 0);
       this.fadingOverlay.setDepth(4);
       this.fadingOverlay.setAlpha(0);
-        this.add.image(610, 380, "tutorial");
+      this.add.image (610, 380,"score")
+      this.add.text (50, 50, `Gracias por jugar!`, {
+        fontSize: "100px"});
+      this.add.text (50, 600, `Juego producido por \n Camila Renna`, {
+        fontSize: "50px"
+    });
       let tutoButton = this.add
-        .image(580, 430, "continueButton")
+        .image(1180, 713, "continueButton")
         .setInteractive(this.input.makePixelPerfect());
 
       tutoButton.on("pointerover", () => {
@@ -32,8 +37,8 @@ export default class Tutorial extends Phaser.Scene {
           alpha: 1,
           duration: 500,
           onComplete: () => {
-            this.scene.start("Game", {level: this.level});
-            // this.menuSong.stop ({loop: false});
+            this.scene.start("Menu");
+
           },
         });
       });
